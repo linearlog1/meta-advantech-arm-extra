@@ -16,6 +16,7 @@ do_install () {
 	install -m 0644 ${WORKDIR}/nvram_ap6236.txt ${D}${base_libdir}/firmware/bcm/AP6236/
 
 	ln -sf ${base_libdir}/firmware/bcm/AP6236/fw_bcm43436b0_apsta.bin ${D}${base_libdir}/firmware/bcm/fw_bcm43436b0.bin
+	ln -sf ${base_libdir}/firmware/bcm/AP6236/nvram_ap6236.txt ${D}${base_libdir}/firmware/bcm/nvram_ap6236.txt
 }
 
 FILES_${PN} += "${base_libdir}/firmware"
