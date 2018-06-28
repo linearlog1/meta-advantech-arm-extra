@@ -11,7 +11,7 @@ LICENSE = "GPLv2+"
 LIC_FILES_CHKSUM = "file://Licenses/gpl-2.0.txt;md5=b234ee4d69f5fce4486a80fdaf4a4263"
 
 SRCBRANCH = "DMS-SE25"
-UBOOT_SRC ?= "git://172.16.7.218/home/gituser/code/nxp/Yocto_L4.9.11_1.0.0/uboot-imx.git;protocol=ssh;user=gituser"
+UBOOT_SRC ?= "git://172.16.9.237/home/gituser/code/nxp/Yocto_L4.9.11_1.0.0/uboot-imx.git;protocol=ssh;user=gituser"
 SRC_URI = "${UBOOT_SRC};branch=${SRCBRANCH}"
 SRCREV = "${AUTOREV}"
 
