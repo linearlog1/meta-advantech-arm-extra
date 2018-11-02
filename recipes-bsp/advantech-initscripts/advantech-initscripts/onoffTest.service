@@ -1,0 +1,10 @@
+[Unit]
+Description=onoffTest service
+After=multi-user.target bootcount.service
+
+[Service]
+Type=oneshot
+ExecStart=/lib/onoffTest.sh
+
+[Install]
+WantedBy=custom.target

@@ -12,7 +12,7 @@ CORE_IMAGE_EXTRA_INSTALL += " \
     dhcp-client \
     init-ifupdown \
     advantech-initscripts \
-    iperf \
+    initscripts \
     fbida \
     parted \
     openssh \

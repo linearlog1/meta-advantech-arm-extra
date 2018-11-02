@@ -8,7 +8,7 @@ installPath=/etc/rc5.d/S98advboot
 bootCount()
 {
 
-	if [ -e ${logFile} ] ; then 
+	if [ -e ${logFile} ] ; then
 		logNu=`cat ${logFile}`
 		countNu=$((${logNu}+1))
 		echo ${countNu} > ${logFile}
@@ -17,6 +17,4 @@ bootCount()
 		echo "1" > ${logFile}
 	fi
 }
-
 bootCount
-
