@@ -9,6 +9,7 @@ SRC_URI = "file://bt-init.sh \
            file://bootcount.sh \
            file://onoffTest.sh \
            file://dhcpserv-init.sh \
+           file://bt-init.service \
            file://bootcount.service \
            file://onoffTest.service \
            file://dhcpserv-init.service \
@@ -45,6 +46,7 @@ do_install () {
 	install -m 0777    ${WORKDIR}/onoffTest.sh     ${D}${base_libdir}
 	install -m 0777    ${WORKDIR}/bt-init.sh       ${D}${base_libdir}
 	install -m 0777    ${WORKDIR}/dhcpserv-init.sh ${D}${base_libdir}
+	install -m 0777    ${WORKDIR}/bt-init.sh       ${D}${base_libdir}
 
 #
 # Create runlevel links
@@ -65,11 +67,13 @@ do_install () {
 		install -m 644 ${WORKDIR}/bootcount.service ${D}/${systemd_system_unitdir}
 		install -m 644 ${WORKDIR}/onoffTest.service ${D}/${systemd_system_unitdir}
 		install -m 644 ${WORKDIR}/dhcpserv-init.service ${D}/${systemd_system_unitdir}
+    install -m 644 ${WORKDIR}/bt-init.service ${D}/${systemd_system_unitdir}
 
 		cd ${D}${systemd_system_unitdir}/multi-user.target.wants/
 		ln -sf ../custom.target ${D}${systemd_system_unitdir}/multi-user.target.wants/custom.target
 
 		cd ${D}${systemd_system_unitdir}/custom.target.wants/
+    ln -sf ../bt-init.service ${D}${systemd_system_unitdir}/custom.target.wants/bt-init.service
 		ln -sf ../bootcount.service ${D}${systemd_system_unitdir}/custom.target.wants/bootcount.service
 		ln -sf ../onoffTest.service ${D}${systemd_system_unitdir}/custom.target.wants/onoffTest.service
 		ln -sf ../dhcpserv-init.service ${D}${systemd_system_unitdir}/custom.target.wants/dhcpserv-init.service

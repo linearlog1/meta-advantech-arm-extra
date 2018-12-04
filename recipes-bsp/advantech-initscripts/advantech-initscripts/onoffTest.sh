@@ -21,12 +21,12 @@ function TTY_test
   	fi
 
   	stty -F /dev/$UART_PORT 1200 cs7 -parodd parenb -cstopb -icanon -iexten -ixon -ixoff crtscts cread clocal echo -echoe echok -echoctl
-  	sleep 2
+  	sleep 8
   	cat /dev/$UART_PORT > ${TTY_TEMPFILE} &
   	cat_pid=$!
   	sync
   	echo "1234567890abcdefghijklmnopqrstuvwxyz!" >/dev/$UART_PORT
-  	sleep 2
+  	sleep 4
   	sync
   	get_data=$(head -n 1 ${TTY_TEMPFILE})
           sync
@@ -34,11 +34,14 @@ function TTY_test
         	ps &>/dev/null
 
   	if [ "$get_data" == "1234567890abcdefghijklmnopqrstuvwxyz!" ];then
-  		return 0
+  		# return 0
+      sleep 1
+       echo "testtimes${logNu}: pass"
   	else
         logNu=`cat ${logFile}`
-        echo "testtimes${logNu}: /dev/ttymxc$i Error [$(date)] " >> ${TTY_LOGFILE}
-    fi
+        echo "testtimes${logNu}: /dev/ttyUSB$i Error [$(date)] " >> ${TTY_LOGFILE}
+        fi
+    sleep 1
  done
 }
 
@@ -69,17 +72,17 @@ function Lan_test
 	if [ $? -eq 1 ]; then
 		ifconfig eth0 up
 	fi
-	sleep 10
-  ifconfig | grep wlan0 &> /dev/null
-	if [ $? -eq 1 ]; then
-    logNu=`cat ${logFile}`
-			echo "testtimes${logNu}: wlan0 Error $(date) " >> ${WALN_LOGFILE}
-	fi
-        ifconfig | grep eth0 &> /dev/null
-	if [ $? -eq 1 ]; then
-    logNu=`cat ${logFile}`
-			echo "testtimes${logNu}: eth0 Error $(date) " >> ${ETH_LOGFILE}
-	fi
+	# sleep 10
+  # ifconfig | grep wlan0 &> /dev/null
+	# if [ $? -eq 1 ]; then
+  #   logNu=`cat ${logFile}`
+	# 		echo "testtimes${logNu}: wlan0 Error $(date) " >> ${WALN_LOGFILE}
+	# fi
+  #       ifconfig | grep eth0 &> /dev/null
+	# if [ $? -eq 1 ]; then
+  #   logNu=`cat ${logFile}`
+	# 		echo "testtimes${logNu}: eth0 Error $(date) " >> ${ETH_LOGFILE}
+	# fi
 }
 Lan_test
-TTY_test
+# TTY_test

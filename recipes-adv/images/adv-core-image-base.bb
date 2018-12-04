@@ -12,9 +12,9 @@ CORE_IMAGE_EXTRA_INSTALL += " \
     dhcp-client \
     init-ifupdown \
     advantech-initscripts \
-    initscripts \
     fbida \
     parted \
     openssh \
     stress \
+    brcm-patchram-plus \
     "
