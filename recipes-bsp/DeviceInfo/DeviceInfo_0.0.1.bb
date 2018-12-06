@@ -7,7 +7,9 @@ LICENSE = "Proprietary"
 LIC_FILES_CHKSUM = "file://ADVANTECH-LICENSE.txt;md5=5ce1bdf9929c5c1b0281430c0254159e"
 
 SRCBRANCH ?= "master"
-SRC_URI = "git://172.16.9.237/~/code/nxp/Adv_VersionInfo.git;protocol=ssh;branch=${SRCBRANCH};user=gituser"
+# SRC_URI = "git://172.16.9.237/~/code/nxp/Adv_VersionInfo.git;protocol=ssh;branch=${SRCBRANCH};user=gituser"
+SRC_URI = "git://github.com/linearlog1/Adv_VersionInfo.git;protocol=git;branch=${SRCBRANCH}"
+
 SRCREV = "${AUTOREV}"
 
 require recipes-qt/qt5/qt5.inc
@@ -41,10 +43,9 @@ do_install () {
 	#desktop file in /usr/share/applications
 	install -d ${D}${datadir}/applications
 	install -m 0644 ${S}/DeviceInfo.desktop ${D}${datadir}/applications/
- 
+
 }
 
 FILES_${PN} += "${prefix}/local/DeviceInfo \
 		${prefix}/bin/DeviceInfo \
                 ${datadir}/applications"
-

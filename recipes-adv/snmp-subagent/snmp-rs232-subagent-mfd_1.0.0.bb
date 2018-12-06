@@ -5,7 +5,9 @@ LIC_FILES_CHKSUM = "file://ADVANTECH-LICENSE.txt;md5=5ce1bdf9929c5c1b0281430c025
 DEPENDS = "net-snmp"
 
 SRCBRANCH ?= "master"
-SRC_URI = "git://172.16.9.237/~/code/DMS-SE25/snmp/snmp-rs232-subagent-mfd.git;protocol=ssh;branch=${SRCBRANCH};user=gituser"
+# SRC_URI = "git://172.16.9.237/~/code/DMS-SE25/snmp/snmp-rs232-subagent-mfd.git;protocol=ssh;branch=${SRCBRANCH};user=gituser"
+SRC_URI = "git://github.com/linearlog1/snmp-rs232-subagent-mfd.git;protocol=git;branch=${SRCBRANCH}"
+
 SRCREV = "${AUTOREV}"
 
 S = "${WORKDIR}/git"
